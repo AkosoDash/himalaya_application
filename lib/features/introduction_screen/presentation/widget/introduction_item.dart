@@ -114,7 +114,7 @@ class IntroductionItem extends StatelessWidget {
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 14,
-                          fontWeight: FontWeight.w600), // Text color
+                          fontWeight: FontWeight.w600),
                     ),
                   ),
                 )
