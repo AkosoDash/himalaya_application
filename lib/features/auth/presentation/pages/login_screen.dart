@@ -1,7 +1,9 @@
 import 'dart:developer'; // For using log function
 import 'package:flutter/material.dart';
 import 'package:himalaya_application/core/utils/hex_to_color.dart';
-import 'package:himalaya_application/core/utils/screen_resolution.dart'; // Assuming this is a utility for converting HEX to color.
+import 'package:himalaya_application/core/utils/screen_resolution.dart';
+import 'package:himalaya_application/features/auth/presentation/pages/forgot_password_screen.dart';
+import 'package:himalaya_application/features/auth/presentation/pages/registration_screen.dart'; // Assuming this is a utility for converting HEX to color.
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -166,8 +168,15 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
-                  onPressed: () =>
-                      log("Forgot Password Pressed"), // Corrected log usage
+                  onPressed: () => {
+                    {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ForgotPasswordScreen()),
+                      )
+                    }
+                  },
                   child: const Text(
                     "Forgot Password",
                     style: TextStyle(
@@ -206,8 +215,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       MainAxisAlignment.center, // Align the row to start
                   children: [
                     TextButton(
-                      onPressed: () =>
-                          log("Forgot Password Pressed"), // Corrected log usage
+                      onPressed: () => {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const RegistrationScreen()),
+                        )
+                      },
                       child: Text(
                         "Klik Disini",
                         style: TextStyle(
