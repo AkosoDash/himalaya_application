@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:himalaya_application/core/utils/hex_to_color.dart';
 import 'package:himalaya_application/core/utils/screen_resolution.dart';
+import 'package:himalaya_application/features/auth/presentation/pages/change_password_screen.dart';
 import 'package:himalaya_application/features/auth/presentation/pages/otp_verification_screen.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
@@ -118,9 +119,12 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const OtpVerificationScreen(
+                          builder: (context) => OtpVerificationScreen(
                                 otpTypeTitle: "OTP Verification",
                                 otpUrl: "google.com",
+                                directTo: MaterialPageRoute(
+                                    builder: (context) =>
+                                        const ChangePasswordScreen()),
                               )),
                     )
                   },

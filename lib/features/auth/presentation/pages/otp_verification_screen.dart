@@ -1,13 +1,16 @@
 import 'dart:developer'; // For using log function
 import 'package:flutter/material.dart';
+import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:himalaya_application/core/utils/hex_to_color.dart';
-import 'package:himalaya_application/core/utils/screen_resolution.dart';
-import 'package:himalaya_application/features/auth/presentation/pages/change_password_screen.dart';
 
 class OtpVerificationScreen extends StatefulWidget {
   final String otpTypeTitle, otpUrl;
+  final MaterialPageRoute directTo;
   const OtpVerificationScreen(
-      {super.key, required this.otpTypeTitle, required this.otpUrl});
+      {super.key,
+      required this.otpTypeTitle,
+      required this.otpUrl,
+      required this.directTo});
   @override
   State<OtpVerificationScreen> createState() => _OtpVerificationScreenState();
 }
@@ -17,8 +20,8 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   Widget build(BuildContext context) {
     // final String receivedOtpCode = widget.otpUrl;
     final String receivedOtpTypeTitle = widget.otpTypeTitle;
+    final MaterialPageRoute receivedDirectTo = widget.directTo;
 
-    Map<String, double> screenSize = getScreenSize(context);
     return Scaffold(
       body: Container(
         width: double.infinity,
@@ -55,170 +58,32 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                         )
                       ]),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    // First TextField
-                    SizedBox(
-                      width: screenSize['width']! / 6,
-                      child: Container(
-                        decoration: const BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [
-                              Colors.white24,
-                              Colors.white10,
-                            ],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                          ),
-                          borderRadius: BorderRadius.all(Radius.circular(8)),
-                        ),
-                        child: const TextField(
-                          decoration: InputDecoration(
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors
-                                    .white, // Set border color when not focused
-                              ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors.white,
-                                width: .5, // Set border color when focused
-                              ),
-                            ),
-                            filled: true,
-                            fillColor:
-                                Colors.transparent, // Gradient background
-                          ),
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-
-                    // Add a Spacer for gap
-                    const SizedBox(width: 20),
-
-                    // Second TextField
-                    SizedBox(
-                      width: screenSize['width']! / 6,
-                      child: Container(
-                        decoration: const BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [
-                              Colors.white24,
-                              Colors.white10,
-                            ],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                          ),
-                          borderRadius: BorderRadius.all(Radius.circular(8)),
-                        ),
-                        child: const TextField(
-                          decoration: InputDecoration(
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors
-                                    .white, // Set border color when not focused
-                              ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors.white,
-                                width: .5, // Set border color when focused
-                              ),
-                            ),
-                            filled: true,
-                            fillColor:
-                                Colors.transparent, // Gradient background
-                          ),
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-
-                    // Add a Spacer for gap
-                    const SizedBox(width: 20),
-
-                    // Third TextField
-                    SizedBox(
-                      width: screenSize['width']! / 6,
-                      child: Container(
-                        decoration: const BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [
-                              Colors.white24,
-                              Colors.white10,
-                            ],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                          ),
-                          borderRadius: BorderRadius.all(Radius.circular(8)),
-                        ),
-                        child: const TextField(
-                          decoration: InputDecoration(
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors
-                                    .white, // Set border color when not focused
-                              ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors.white,
-                                width: .5, // Set border color when focused
-                              ),
-                            ),
-                            filled: true,
-                            fillColor:
-                                Colors.transparent, // Gradient background
-                          ),
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-
-                    // Add a Spacer for gap
-                    const SizedBox(width: 20),
-
-                    // Fourth TextField
-                    SizedBox(
-                      width: screenSize['width']! / 6,
-                      child: Container(
-                        decoration: const BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [
-                              Colors.white24,
-                              Colors.white10,
-                            ],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                          ),
-                          borderRadius: BorderRadius.all(Radius.circular(8)),
-                        ),
-                        child: const TextField(
-                          decoration: InputDecoration(
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors
-                                    .white, // Set border color when not focused
-                              ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors.white,
-                                width: .5, // Set border color when focused
-                              ),
-                            ),
-                            filled: true,
-                            fillColor:
-                                Colors.transparent, // Gradient background
-                          ),
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ],
+                OtpTextField(
+                  numberOfFields: 4,
+                  fieldWidth: 64,
+                  borderWidth: 0.5,
+                  fillColor: Colors.white,
+                  textStyle: const TextStyle(color: Colors.white, fontSize: 24),
+                  borderRadius: const BorderRadius.all(Radius.circular(8)),
+                  borderColor: const Color(0xFFFFFFFF),
+                  margin: const EdgeInsets.symmetric(horizontal: 18),
+                  showFieldAsBox: true,
+                  focusedBorderColor: const Color(0xFFFFEE62),
+                  //runs when a code is typed in
+                  onCodeChanged: (String code) {
+                    //handle validation or checks here
+                  },
+                  //runs when every textfield is filled
+                  onSubmit: (String verificationCode) {
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return const AlertDialog(
+                            title: Text("Verification Code"),
+                            content: Text('Code entered is asd'),
+                          );
+                        });
+                  }, // end onSubmit
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 48),
@@ -229,14 +94,8 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                           BorderRadius.circular(4.0), // Desired border radius
                     ),
                     child: TextButton(
-                      onPressed: () => {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  const ChangePasswordScreen()),
-                        )
-                      },
+                      onPressed: () =>
+                          {Navigator.push(context, receivedDirectTo)},
                       style: ButtonStyle(
                         foregroundColor:
                             WidgetStateProperty.all<Color>(Colors.transparent),

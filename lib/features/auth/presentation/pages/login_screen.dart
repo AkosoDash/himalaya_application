@@ -1,9 +1,10 @@
-import 'dart:developer'; // For using log function
 import 'package:flutter/material.dart';
+import 'package:himalaya_application/core/components/input/text_field/text_field_password.dart';
 import 'package:himalaya_application/core/utils/hex_to_color.dart';
 import 'package:himalaya_application/core/utils/screen_resolution.dart';
 import 'package:himalaya_application/features/auth/presentation/pages/forgot_password_screen.dart';
-import 'package:himalaya_application/features/auth/presentation/pages/registration_screen.dart'; // Assuming this is a utility for converting HEX to color.
+import 'package:himalaya_application/features/auth/presentation/pages/registration_screen.dart';
+import 'package:himalaya_application/features/home_screen/presentation/pages/main_screen.dart'; // Assuming this is a utility for converting HEX to color.
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -15,9 +16,12 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     Map<String, double> screenSize = getScreenSize(context);
+    // bool showPassword = false;
     return Scaffold(
-      body: Container(
+        body: SingleChildScrollView(
+      child: Container(
         width: double.infinity,
+        height: screenSize['height'],
         decoration: const BoxDecoration(
             gradient: LinearGradient(colors: [
           Color.fromARGB(255, 69, 163, 192),
@@ -124,43 +128,18 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(
                 width: screenSize['width']! - 112,
                 child: Container(
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        Colors.white24,
-                        Colors.white10,
-                      ],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
-                    borderRadius: BorderRadius.all(Radius.circular(8)),
-                  ),
-                  child: const TextField(
-                    decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color:
-                              Colors.white, // Set border color when not focused
-                        ),
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          Colors.white24,
+                          Colors.white10,
+                        ],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
                       ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.white,
-                          width: 1.0, // Set border color when focused
-                        ),
-                      ),
-                      prefixIcon: Icon(Icons.key_outlined, color: Colors.white),
-                      suffixIcon: Icon(Icons.remove_red_eye_outlined,
-                          color: Colors.white),
-                      hintText: 'Enter Password',
-                      hintStyle: TextStyle(color: Colors.white60),
-                      prefixIconColor: Colors.white,
-                      filled: true,
-                      fillColor: Colors.transparent, // Gradient background
+                      borderRadius: BorderRadius.all(Radius.circular(8)),
                     ),
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
+                    child: const PasswordTextField()),
               )
             ]),
             Padding(
@@ -195,7 +174,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     BorderRadius.circular(16.0), // Desired border radius
               ),
               child: TextButton(
-                onPressed: () => log("Sign In Pressed"), // Corrected log usage
+                onPressed: () => {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MainScreen()),
+                  )
+                },
                 child: const Text(
                   "Sign In",
                   style: TextStyle(
@@ -247,6 +231,6 @@ class _LoginScreenState extends State<LoginScreen> {
           ],
         ),
       ),
-    );
+    ));
   }
 }
