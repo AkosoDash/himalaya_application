@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:himalaya_application/core/components/input/selection_input/selection_input_basic.dart';
+import 'package:himalaya_application/core/components/input/text_field/text_field_password.dart';
 import 'package:himalaya_application/core/utils/hex_to_color.dart';
 import 'package:himalaya_application/core/utils/screen_resolution.dart';
 import 'package:himalaya_application/features/auth/presentation/pages/login_screen.dart';
-import 'package:himalaya_application/features/auth/presentation/pages/otp_verification_screen.dart'; // Assuming this is a utility for converting HEX to color.
+import 'package:himalaya_application/features/auth/presentation/pages/otp_verification_screen.dart';
+import 'package:himalaya_application/features/home_screen/presentation/pages/main_screen.dart'; // Assuming this is a utility for converting HEX to color.
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({super.key});
@@ -50,118 +53,57 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 )
               ]),
             ),
-            SizedBox(
-              width: getScreenSize(context)['width']! - 40,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment:
-                        CrossAxisAlignment.start, // Align to the start
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.only(bottom: 12),
-                        child: Text(
-                          "First Name",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                          ),
-                          textAlign: TextAlign.left,
-                        ),
-                      ),
-                      SizedBox(
-                        width: screenSize['width']! / 2 - 36,
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [
-                                Colors.white24,
-                                Colors.white10,
-                              ],
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                            ),
-                            borderRadius: BorderRadius.all(Radius.circular(8)),
-                          ),
-                          child: const TextField(
-                            decoration: InputDecoration(
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.white,
-                                ),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.white,
-                                  width: 1.0,
-                                ),
-                              ),
-                              filled: true,
-                              fillColor: Colors.transparent,
-                            ),
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
-                      )
-                    ],
+            Column(children: [
+              const Padding(
+                padding: EdgeInsets.only(bottom: 12, left: 20, top: 12),
+                child: Align(
+                  alignment: Alignment.centerLeft, // Align the text to the left
+                  child: Text(
+                    "Name",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400),
+                    textAlign: TextAlign.left,
                   ),
-                  Column(
-                    crossAxisAlignment:
-                        CrossAxisAlignment.start, // Align to the start
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.only(bottom: 12),
-                        child: Text(
-                          "Last Name",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                          ),
-                          textAlign: TextAlign.left,
-                        ),
-                      ),
-                      SizedBox(
-                        width: screenSize['width']! / 2 - 36,
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [
-                                Colors.white24,
-                                Colors.white10,
-                              ],
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                            ),
-                            borderRadius: BorderRadius.all(Radius.circular(8)),
-                          ),
-                          child: const TextField(
-                            decoration: InputDecoration(
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.white,
-                                ),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.white,
-                                  width: 1.0,
-                                ),
-                              ),
-                              filled: true,
-                              fillColor: Colors.transparent,
-                            ),
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ],
+                ),
               ),
-            ),
+              SizedBox(
+                width: screenSize['width']! - 40,
+                child: Container(
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        Colors.white24,
+                        Colors.white10,
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                    borderRadius: BorderRadius.all(Radius.circular(8)),
+                  ),
+                  child: const TextField(
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color:
+                              Colors.white, // Set border color when not focused
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.white,
+                          width: 1.0, // Set border color when focused
+                        ),
+                      ),
+                      filled: true,
+                      fillColor: Colors.transparent, // Gradient background
+                    ),
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              )
+            ]),
             Column(children: [
               const Padding(
                 padding: EdgeInsets.only(bottom: 12, left: 20, top: 12),
@@ -219,7 +161,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 child: Align(
                   alignment: Alignment.centerLeft, // Align the text to the left
                   child: Text(
-                    "Degree",
+                    "Grade",
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 14,
@@ -242,27 +184,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     ),
                     borderRadius: BorderRadius.all(Radius.circular(8)),
                   ),
-                  child: const TextField(
-                    decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color:
-                              Colors.white, // Set border color when not focused
-                        ),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.white,
-                          width: 1.0, // Set border color when focused
-                        ),
-                      ),
-                      suffixIcon: Icon(Icons.keyboard_arrow_down_rounded,
-                          color: Colors.white),
-                      filled: true,
-                      fillColor: Colors.transparent, // Gradient background
-                    ),
-                    style: TextStyle(color: Colors.white),
-                  ),
+                  child: const SelectionInputBasic(),
                 ),
               )
             ]),
@@ -348,28 +270,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     ),
                     borderRadius: BorderRadius.all(Radius.circular(8)),
                   ),
-                  child: const TextField(
-                    decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color:
-                              Colors.white, // Set border color when not focused
-                        ),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.white,
-                          width: 1.0, // Set border color when focused
-                        ),
-                      ),
-                      prefixIcon: Icon(Icons.key_outlined, color: Colors.white),
-                      suffixIcon: Icon(Icons.remove_red_eye_outlined,
-                          color: Colors.white),
-                      filled: true,
-                      fillColor: Colors.transparent, // Gradient background
-                    ),
-                    style: TextStyle(color: Colors.white),
-                  ),
+                  child: const PasswordTextField(),
                 ),
               )
             ]),
@@ -391,40 +292,18 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               SizedBox(
                 width: screenSize['width']! - 40,
                 child: Container(
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        Colors.white24,
-                        Colors.white10,
-                      ],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
-                    borderRadius: BorderRadius.all(Radius.circular(8)),
-                  ),
-                  child: const TextField(
-                    decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color:
-                              Colors.white, // Set border color when not focused
-                        ),
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          Colors.white24,
+                          Colors.white10,
+                        ],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
                       ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.white,
-                          width: 1.0, // Set border color when focused
-                        ),
-                      ),
-                      prefixIcon: Icon(Icons.key_outlined, color: Colors.white),
-                      suffixIcon: Icon(Icons.remove_red_eye_outlined,
-                          color: Colors.white),
-                      filled: true,
-                      fillColor: Colors.transparent, // Gradient background
+                      borderRadius: BorderRadius.all(Radius.circular(8)),
                     ),
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
+                    child: const PasswordTextField()),
               )
             ]),
             Column(children: [
@@ -492,9 +371,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const OtpVerificationScreen(
+                          builder: (context) => OtpVerificationScreen(
                                 otpTypeTitle: "Send OTP Code!",
                                 otpUrl: "google.com",
+                                directTo: MaterialPageRoute(
+                                    builder: (context) => const MainScreen()),
                               )),
                     )
                   },

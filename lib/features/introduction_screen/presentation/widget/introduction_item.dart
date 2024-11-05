@@ -1,7 +1,6 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:himalaya_application/core/utils/hex_to_color.dart';
+import 'package:himalaya_application/features/auth/presentation/pages/login_screen.dart';
 import 'package:himalaya_application/features/introduction_screen/domain/entities/entity.introduction.dart';
 
 class IntroductionItem extends StatelessWidget {
@@ -108,7 +107,13 @@ class IntroductionItem extends StatelessWidget {
                             horizontal: 16.0), // Padding inside the button
                       ),
                     ),
-                    onPressed: () => log("Direct to Registration Screen"),
+                    onPressed: () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LoginScreen()),
+                      )
+                    },
                     child: const Text(
                       "Let's Get Started",
                       style: TextStyle(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:himalaya_application/core/components/input/text_field/text_field_password.dart';
 import 'package:himalaya_application/core/utils/hex_to_color.dart';
 import 'package:himalaya_application/core/utils/screen_resolution.dart';
 import 'package:himalaya_application/features/auth/presentation/pages/login_screen.dart';
@@ -71,46 +72,18 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                   SizedBox(
                     width: screenSize['width']! - 48,
                     child: Container(
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            Colors.white24,
-                            Colors.white10,
-                          ],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
+                        decoration: const BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [
+                              Colors.white24,
+                              Colors.white10,
+                            ],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          borderRadius: BorderRadius.all(Radius.circular(8)),
                         ),
-                        borderRadius: BorderRadius.all(Radius.circular(8)),
-                      ),
-                      child: const TextField(
-                        decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors
-                                  .white, // Set border color when not focused
-                            ),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.white,
-                              width: 1.0, // Set border color when focused
-                            ),
-                          ),
-                          prefixIcon:
-                              Icon(Icons.key_outlined, color: Colors.white),
-                          suffixIcon: Icon(
-                            Icons.remove_red_eye_outlined,
-                            color: Colors.white,
-                          ),
-                          hintText: 'Hihihiha123#',
-                          hintStyle: TextStyle(color: Colors.white60),
-                          prefixIconColor: Colors.white,
-                          filled: true,
-                          fillColor: Colors.transparent, // Gradient background
-                        ),
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
+                        child: const PasswordTextField()),
                   )
                 ]),
                 Column(children: [
@@ -132,46 +105,18 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                   SizedBox(
                     width: screenSize['width']! - 48,
                     child: Container(
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            Colors.white24,
-                            Colors.white10,
-                          ],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
+                        decoration: const BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [
+                              Colors.white24,
+                              Colors.white10,
+                            ],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          borderRadius: BorderRadius.all(Radius.circular(8)),
                         ),
-                        borderRadius: BorderRadius.all(Radius.circular(8)),
-                      ),
-                      child: const TextField(
-                        decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors
-                                  .white, // Set border color when not focused
-                            ),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.white,
-                              width: 1.0, // Set border color when focused
-                            ),
-                          ),
-                          prefixIcon:
-                              Icon(Icons.key_outlined, color: Colors.white),
-                          suffixIcon: Icon(
-                            Icons.remove_red_eye_outlined,
-                            color: Colors.white,
-                          ),
-                          hintText: 'Hihihiha123#',
-                          hintStyle: TextStyle(color: Colors.white60),
-                          prefixIconColor: Colors.white,
-                          filled: true,
-                          fillColor: Colors.transparent, // Gradient background
-                        ),
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
+                        child: const PasswordTextField()),
                   )
                 ]),
                 Padding(
